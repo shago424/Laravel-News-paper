@@ -20,18 +20,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'PublicBlogController@index')->name('public');
-Route::get('/argentPost', 'PublicBlogController@argentPost')->name('argentPost');
-Route::get('/sliderPost', 'PublicBlogController@sliderPost')->name('sliderPost');
-Route::get('/nuPost', 'PublicBlogController@nuPost')->name('nuPost');
-Route::get('/puPost', 'PublicBlogController@puPost')->name('puPost');
-Route::get('/sportsPost', 'PublicBlogController@sportsPost')->name('sportsPost');
-Route::get('/gjPost', 'PublicBlogController@gjPost')->name('gjPost');
-Route::get('/pjPost', 'PublicBlogController@pjPost')->name('pjPost');
-Route::get('/popularPost', 'PublicBlogController@popularPost')->name('popularPost');
-Route::get('/releatedPost', 'PublicBlogController@releatedPost')->name('releatedPost');
+
+Route::get('/category-post/{slug}', 'PublicBlogController@categoryByPost')->name('category.post');
+Route::get('/subcategory-post/{slug}', 'PublicBlogController@subcategoryByPost')->name('subcategory.post');
 
 Route::get('/singlePost/{slug}', 'PublicBlogController@singlepostById')->name('singlepost');
-Route::get('/categoryIdByPost/{id}', 'PublicBlogController@categoryIdByPost')->name('categoryIdByPost');
+
 Route::get('/SearchPost/', 'PublicBlogController@SearchPost')->name('SearchPost');
 Route::get('/latestPost', 'PublicBlogController@latestPost')->name('latestpost');
 

@@ -15,6 +15,8 @@ class PublicBlogController extends Controller
     public function index()
     {
 
+
+
       $data['sliders'] = Post::with('user','category','subcategory')->where('featured','slider')->orderBy('id','DESC')->limit(5)->get();
       $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->get();
       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
@@ -27,11 +29,12 @@ class PublicBlogController extends Controller
       $data['gjs'] = Post::with('user','category','subcategory')->where('category_id','39')->orderBy('id','DESC')->limit(4)->get();
       $data['gjsingle'] = Post::with('user','category','subcategory')->where('category_id','39')->orderBy('id','DESC')->first();
        $data['pjs'] = Post::with('user','category','subcategory')->where('category_id','40')->orderBy('id','DESC')->limit(4)->get();
-       $data['sports'] = Post::with('user','category','subcategory')->where('category_id','48')->orderBy('id','DESC')->limit(4)->get();
-       $data['scholars'] = Post::with('user','category','subcategory')->where('category_id','46')->orderBy('id','DESC')->limit(3)->get();
+       $data['sports'] = Post::with('user','category','subcategory')->where('category_id','41')->orderBy('id','DESC')->limit(4)->get();
+       $data['scholars'] = Post::with('user','category','subcategory')->where('category_id','42')->orderBy('id','DESC')->limit(3)->get();
       $data['stipends'] = Post::with('user','category','subcategory')->where('category_id','47')->orderBy('id','DESC')->limit(3)->get();
       $data['moneys'] = Post::with('user','category','subcategory')->where('category_id','49')->orderBy('id','DESC')->limit(3)->get();
        $data['categories'] = Category::all();
+        $data['navcategories'] = Category::limit(10)->get();
        $data['subcategories'] = SubCategory::limit(15);
       return view('public.partials.home',$data);
     }
@@ -47,63 +50,11 @@ class PublicBlogController extends Controller
       $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->limit(12)->get();
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::limit(15);
-
+       $data['navcategories'] = Category::limit(10)->get();
       return view('public.single_page.single-post',$data);
     }
 
-     public function latestPost()
-    {
-      $latestposts = Post::with('user','category','subcategory')->orderBy('id','DESC')->get();
-      return response()->json(['latestPosts'=>$latestposts],200);
-    }
-
-     public function argentPost()
-    {
-      $argentposts = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->get();
-      return response()->json(['argentPosts'=>$argentposts],200);
-    }
-
-     public function sliderPost()
-    {
-      $sliderposts = Post::with('user','category','subcategory')->where('featured','slider')->orderBy('id','DESC')->get();
-      return response()->json(['sliderPosts'=>$sliderposts],200);
-    }
-
-     public function nuPost()
-    {
-      $nuposts = Post::with('user','category','subcategory')->where('category_id','2')->orderBy('id','DESC')->get();
-      return response()->json(['nuPosts'=>$nuposts],200);
-    }
-
-     public function puPost()
-    {
-      $puposts = Post::with('user','category','subcategory')->where('category_id','3')->orderBy('id','DESC')->get();
-      return response()->json(['puPosts'=>$puposts],200);
-    }
-
-      public function sportsPost()
-    {
-      $sportsposts = Post::with('user','category','subcategory')->where('category_id','48')->orderBy('id','DESC')->get();
-      return response()->json(['sportsPosts'=>$sportsposts],200);
-    }
-
-     public function gjPost()
-    {
-      $gjposts = Post::with('user','category','subcategory')->where('category_id','48')->orderBy('id','DESC')->get();
-      return response()->json(['gjPosts'=>$gjposts],200);
-    }
-
-     public function pjPost()
-    {
-      $pjposts = Post::with('user','category','subcategory')->where('category_id','48')->orderBy('id','DESC')->get();
-      return response()->json(['pjPosts'=>$pjposts],200);
-    }
-
-     public function popularPost()
-    {
-      $popularposts =Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->get();
-      return response()->json(['popularPosts'=>$popularposts],200);
-    }
+     
 
      public function releatedPost()
     {
@@ -118,11 +69,36 @@ class PublicBlogController extends Controller
 
      
 
-     public function categoryIdByPost($id)
+     public function categoryByPost($slug)
     {
+       $id = Category::where('slug',$slug)->pluck('id');
+      $data['categoryIdByPosts'] = Post::with('user','category','subcategory')->where('category_id',$id)->orderBy('id','DESC')->get();
+      $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->limit(12)->get();
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->limit(12)->get();
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::limit(15);
+       $data['navcategories'] = Category::limit(10)->get();
+      return view('public.single_page.allcategory-post',$data);
+    }
 
-      $categoryIdByPosts = Post::with('user','category','subcategory')->where('category_id',$id)->orderBy('id','DESC')->get();
-      return response()->json(['categoryIdByPosts'=>$categoryIdByPosts],200);
+       public function subcategoryByPost($slug)
+    {
+       $id = SubCategory::where('slug',$slug)->pluck('id');
+      $data['subcategoryIdByPosts'] = Post::with('user','category','subcategory')->where('sub_category_id',$id)->orderBy('id','DESC')->get();
+      $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->limit(12)->get();
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->limit(12)->get();
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::limit(15);
+       $data['navcategories'] = Category::limit(10)->get();
+      return view('public.single_page.allsubcategory-post',$data);
     }
 
       public function SearchPost()

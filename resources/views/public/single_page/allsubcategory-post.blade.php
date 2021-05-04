@@ -5,57 +5,35 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
           <div class="single_page">
-            <ol class="breadcrumb">
-              <li><a href="{{ route('public') }}">Home</a></li>
-              <li><a href="#">{{ $post->category->name }}</a></li>
-              <li class="active">{{ $post->subcategory->name }}</li>
+            <ol class="breadcrumb" style="height: 50px;background-color: #1F5B44;color: #fff">
+              <li style="padding-top: 7px"><a href="{{ route('public') }}">Home</a></li>
+              <li style="padding-top: 7px"><a href="#">Sub Category Name : {{-- {{ $category->name }} --}}</a></li>
+              
             </ol>
-            <h1>{{ $post->title }}</h1>
-            <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i>{{ $post->user->name }}</a> <span><i class="fa fa-calendar"></i>{{ date('d-M-Y:h:i:A',strtotime($post->created_at)) }}</span> <a href="#"><i class="fa fa-tags"></i>{{ $post->tag }}</a> </div>
-            <div class="single_page_content"> <img class="img-center"  src="{{ asset('upload/postimage/'.$post->image) }}" alt="">
-              <h5 style="text-align: justify;color: #000">{!! $post->description !!}</h5>
-              {{-- <blockquote style="text-align: justify;color: blue"> <i> {!! $post->description !!} </i></blockquote> --}}
-              
-              <div style="padding-top: 50px" >
-                @if($post->file == NULL)
+           
+             @if($subcategoryIdByPosts->isEmpty())
+            <div class="error_page">
+            <h3>We Are Sorry</h3>
+            <h1> Not Found !</h1>
+            <p>Unfortunately, the page you were looking for could not be found. It may be temporarily unavailable, moved or no longer exists</p>
+            <span></span> <a href="{{ route('public') }}" class="wow fadeInLeftBig">Go to home page</a> </div>
 
-                @else
-                <a target="_blank" href="{{asset('upload/postfile/'.$post->file)}}" class="btn btn-primary">File Download</a>
-                @endif
-                 @if($post->video_link == NULL)
-              
-                @else
-                <a target="_blank" href="{{ $post->video_link }}" class="btn btn-warning"> <i>Go To Video </i></a>
-                @endif
-                 @if($post->link == NULL)
-              
-                @else
-                <a target="_blank" href="{{ $post->link }}" class="btn btn-danger"> <i>Visit Link </i></a>
-                @endif
-              </div>
-              
-            </div>
-            <div class="social_link">
-              <ul class="sociallink_nav">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-              </ul>
-            </div>
+            @else
             <div class="related_post">
-              <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
+              <h3>Sub Category Wise Post <i class="fa fa-thumbs-o-up"></i></h3>
+              <hr style="border:solid 2px">
               <ul class="spost_nav wow fadeInDown animated">
-              	@foreach($relateds as $related)
+              	@foreach($subcategoryIdByPosts as $subcat_wise)
                 <li>
-                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$related->slug) }}"> <img src="{{ asset('upload/postimage/'.$related->image) }}" alt=""> </a>
-                    <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$related->slug) }}"> Aliquam {{ $related->title }}</a> </div>
+                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$subcat_wise->slug) }}"> <img src="{{ asset('upload/postimage/'.$subcat_wise->image) }}" alt=""> </a>
+                    <div class="media-body"> <a class="subcatg_title" href="{{ route('singlepost',$subcat_wise->slug) }}"> Aliquam {{ $subcat_wise->title }}</a> </div>
                   </div>
                 </li>
                 @endforeach
               </ul>
             </div>
+            @endif
+
           </div>
         </div>
       </div>

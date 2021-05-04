@@ -3,14 +3,14 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="slick_slider">
           @foreach($sliders as $slider)
-          <div class="single_iteam"> <a href="pages/single_page.html"> <img src="{{ asset('upload/postimage') }}/{{ $slider->image }}" alt=""></a>
+          <div class="single_iteam"> <a href="{{ route('singlepost',$slider->slug) }}"> <img src="{{ asset('upload/postimage') }}/{{ $slider->image }}" alt=""></a>
             <div class="slider_article">
-              <h2><a class="slider_tittle" href="pages/single_page.html">{{ $slider->title }}</a></h2>
+              <h2><a class="slider_tittle" href="{{ route('singlepost',$slider->slug) }}">{{ $slider->title }}</a></h2>
               <p>{!! $slider->description !!}</p>
             </div>
           </div>
          @endforeach
-        
+         
          
         </div>
       </div>
@@ -22,8 +22,8 @@
             <ul class="latest_postnav">
               @foreach($latests as $latest)
               <li>
-                <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{{ asset('upload/postimage') }}/{{ $latest->image }}"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> {{ $latest->title }}</a> </div>
+                <div class="media"> <a href="{{ route('singlepost',$latest->slug) }}" class="media-left"> <img alt="" src="{{ asset('upload/postimage') }}/{{ $latest->image }}"> </a>
+                  <div class="media-body"> <a href="{{ route('singlepost',$latest->slug) }}" class="catg_title"> {{ $latest->title }}</a> </div>
                 </div>
               </li>
              @endforeach

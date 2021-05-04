@@ -128,7 +128,7 @@
               <div role="tabpanel" class="tab-pane active" id="category">
                 <ul>
                   @foreach($categories as $category)
-                  <li class="cat-item"><a href="#">{{ $category->name }}</a></li>
+                  <li class="cat-item"><a href="{{ route('category.post',$category->slug) }}">{{ $category->name }}</a></li>
                   @endforeach
                 </ul>
               </div>
@@ -136,7 +136,7 @@
               <div role="tabpanel" class="tab-pane active" id="category">
                 <ul>
                   @foreach($subcategories as $subcategory)
-                  <li class="cat-item"><a href="#">{{ $subcategory->name }}</a></li>
+                  <li class="cat-item"><a href="{{ route('subcategory.post',$subcategory->slug) }}">{{ $subcategory->name }}</a></li>
                   @endforeach
                 </ul>
               </div>
