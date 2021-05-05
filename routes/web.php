@@ -20,11 +20,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'PublicBlogController@index')->name('public');
-
+Route::get('/singlePost/{slug}', 'PublicBlogController@singlepostById')->name('singlepost');
 Route::get('/category-post/{slug}', 'PublicBlogController@categoryByPost')->name('category.post');
 Route::get('/subcategory-post/{slug}', 'PublicBlogController@subcategoryByPost')->name('subcategory.post');
+Route::get('/allschool-post/{slug}', 'PublicBlogController@allschoolPost')->name('allschool.post');
 
-Route::get('/singlePost/{slug}', 'PublicBlogController@singlepostById')->name('singlepost');
+
 
 Route::get('/SearchPost/', 'PublicBlogController@SearchPost')->name('SearchPost');
 Route::get('/latestPost', 'PublicBlogController@latestPost')->name('latestpost');

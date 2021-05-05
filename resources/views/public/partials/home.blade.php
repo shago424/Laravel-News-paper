@@ -19,7 +19,7 @@
             @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allschool.post',$school->slug) }}" class="btn btn-primary" class="pull-right">More Post</a>
             </div>
           </div>
          </div>

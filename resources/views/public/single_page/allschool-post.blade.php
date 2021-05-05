@@ -5,12 +5,13 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
           <div class="single_page">
-            <ol class="breadcrumb" style="height: 50px;background-color: #1F5B44;color: #fff">
-               <li style="padding-top:;font-size: 25px"><a href="{{ route('public') }}">সাব ক্যাটেগরি নিউজ </a></li>
+            <ol class="breadcrumb" style="height: 50px;background-color: #1A5276;color: #fff">
+              <li style="padding-top:;font-size: 25px"><a href="{{ route('public') }}">স্কুল/কলেজ/মাদ্রাসা </a></li>
+              
               
             </ol>
            
-             @if($subcategoryIdByPosts->isEmpty())
+            @if($allschoolposts->isEmpty())
             <div class="error_page">
             <h3>We Are Sorry</h3>
             <h1> Not Found !</h1>
@@ -19,21 +20,40 @@
 
             @else
             <div class="related_post">
-             
-              <ul class="spost_nav wow fadeInDown animated">
-              	@foreach($subcategoryIdByPosts as $subcat_wise)
-                <li>
-                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$subcat_wise->slug) }}"> <img src="{{ asset('upload/postimage/'.$subcat_wise->image) }}" alt=""> </a>
-                    <div class="media-body"> <a class="subcatg_title" href="{{ route('singlepost',$subcat_wise->slug) }}"> Aliquam {{ $subcat_wise->title }}</a> </div>
-                  </div>
-                </li>
-                @endforeach
-              </ul>
-              {{ $subcategoryIdByPosts->links() }}
+              <div class="table-responsive">
+                  <table class="table table-responsive table-hover" style="border:solid 1px">
+                      <thead>
+                          <tr style="color: blue;font-size: 16px">
+                              <th>#</th>
+                              <th>ছবি</th>
+                              <th>তারিখ</th>
+                              <th>শিরোনাম</th>
+                              <th>ডাউনলোড</th>
+                              
+                          </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($allschoolposts as $key => $allscool)
+                          <tr>
+                              <td style="text-align: center;">{{ $key+1 }}</td>
+                              <td style="text-align: center;">  <img src="{{ asset('upload/postimage/'.$allscool->image) }}" width="50px" height="50px"></td>
+                              <td width="15%" style="text-align: center;">{{ date('d-m-Y',strtotime($allscool->created_at)) }}</td>
+                              <td>{{ $allscool->title }}</td>
+                              @if($allscool->file ==NULL)
+                              <td></td>
+                              @else
+                              <td style="text-align: center;"> <a target="_blank" href="{{ asset('upload/postfile/'.$allscool->file) }}"><i class="fa fa-download" style="width: 50px;color:blue"></a></td>
+                              @endif
+                          </tr>
+                          @endforeach
+                      </tbody>
+                  </table>
+                  {{ $allschoolposts->links() }}
+              </div>
             </div>
             @endif
-
-            <div class="related_post">
+            <hr>
+        <div class="related_post">
               <h3>সম্পর্কিত <i class="fa fa-thumbs-o-up"></i></h3>
               <hr style="border: solid crimson">
               <ul class="spost_nav wow fadeInDown animated">
@@ -45,7 +65,7 @@
                 </li>
                 @endforeach
               </ul>
-              {{ $relateds->links() }}
+               {{ $relateds->links() }}
             </div>
 
              <div class="related_post">
@@ -60,7 +80,7 @@
                 </li>
                 @endforeach
               </ul>
-               {{ $latests->links() }}
+              {{ $latests->links() }}
             </div>
 
              <div class="related_post">
@@ -75,8 +95,9 @@
                 </li>
                 @endforeach
               </ul>
-              {{ $populars->links() }}
+               {{ $populars->links() }}
             </div>
+
 
           </div>
         </div>
@@ -91,8 +112,7 @@
           <img src="{{ asset('frontend') }}/images/post_img1.jpg" alt=""/> </div>
         </a> </nav>
 
-      @include('public.single_page.single_sidebar')
-      
+     @include('public.single_page.single_sidebar')
     </div>
   </section>
 

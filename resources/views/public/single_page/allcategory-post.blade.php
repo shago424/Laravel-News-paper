@@ -6,8 +6,7 @@
         <div class="left_content">
           <div class="single_page">
             <ol class="breadcrumb" style="height: 50px;background-color: #1A5276;color: #fff">
-              <li style="padding-top: 7px"><a href="{{ route('public') }}">Home</a></li>
-              <li style="padding-top: 7px"><a href="#">Category Name : {{-- {{ $category->name }} --}}</a></li>
+               <li style="padding-top:;font-size: 25px"><a href="{{ route('public') }}">ক্যাটেগরি নিউজ </a></li>
               
             </ol>
            
@@ -20,8 +19,7 @@
 
             @else
             <div class="related_post">
-               <h3>Category Wise Post <i class="fa fa-thumbs-o-up"></i></h3>
-              <hr style="border:solid 2px">
+              
               <ul class="spost_nav wow fadeInDown animated">
               	@foreach($categoryIdByPosts as $cat_wise)
                 <li>
@@ -31,8 +29,54 @@
                 </li>
                 @endforeach
               </ul>
+               {{ $categoryIdByPosts->links() }}
             </div>
             @endif
+
+            <div class="related_post">
+              <h3>সম্পর্কিত <i class="fa fa-thumbs-o-up"></i></h3>
+              <hr style="border: solid crimson">
+              <ul class="spost_nav wow fadeInDown animated">
+                @foreach($relateds as $related)
+                <li>
+                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$related->slug) }}"> <img src="{{ asset('upload/postimage/'.$related->image) }}" alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$related->slug) }}"> Aliquam {{ $related->title }}</a> </div>
+                  </div>
+                </li>
+                @endforeach
+                {{ $relateds->links() }}
+              </ul>
+            </div>
+
+             <div class="related_post">
+              <h3>সর্বশেষ <i class="fa fa-thumbs-o-up"></i></h3>
+              <hr style="border: solid crimson">
+              <ul class="spost_nav wow fadeInDown animated">
+                @foreach($latests as $latest)
+                <li>
+                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$latest->slug) }}"> <img src="{{ asset('upload/postimage/'.$latest->image) }}" alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$latest->slug) }}"> Aliquam {{ $latest->title }}</a> </div>
+                  </div>
+                </li>
+                @endforeach
+              </ul>
+              {{ $latests->links() }}
+            </div>
+
+             <div class="related_post">
+              <h3>জনপ্রিয় <i class="fa fa-thumbs-o-up"></i></h3>
+              <hr style="border: solid crimson">
+              <ul class="spost_nav wow fadeInDown animated">
+                @foreach($populars as $popular)
+                <li>
+                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$popular->slug) }}"> <img src="{{ asset('upload/postimage/'.$popular->image) }}" alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$popular->slug) }}"> Aliquam {{ $popular->title }}</a> </div>
+                  </div>
+                </li>
+                @endforeach
+              </ul>
+              {{ $populars->links() }}
+            </div>
 
 
 
@@ -48,76 +92,7 @@
           <h3>Street Hills</h3>
           <img src="{{ asset('frontend') }}/images/post_img1.jpg" alt=""/> </div>
         </a> </nav>
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <aside class="right_content">
-          <div class="single_sidebar">
-            <h2><span>Popular Post</span></h2>
-            <ul class="spost_nav">
-            	@foreach($populars as $popular)
-              <li>
-                <div class="media wow fadeInDown"> <a href="{{ route('singlepost',$popular->slug) }}" class="media-left"> <img alt="" src="{{ asset('upload/postimage/'.$popular->image) }}"> </a>
-                  <div class="media-body"> <a href="{{ route('singlepost',$popular->slug) }}" class="catg_title"> {{ $popular->title }}</a> </div>
-                </div>
-              </li>
-            @endforeach
-            </ul>
-          </div>
-          <div class="single_sidebar">
-            <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Category</a></li>
-              <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">Sub Category</a></li>
-              <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Video</a></li>
-            </ul>
-            <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="category">
-                <ul>
-                	@foreach($categories as $category)
-                  <li class="cat-item"><a href="{{ route('category.post',$category->slug) }}">{{ $category->name }}</a></li>
-                  @endforeach
-                </ul>
-              </div>
-             
-              <div role="tabpanel" class="tab-pane active" id="category">
-                <ul>
-                	@foreach($subcategories as $subcategory)
-                  <li class="cat-item"><a href="{{ route('subcategory.post',$subcategory->slug) }}">{{ $subcategory->name }}</a></li>
-                  @endforeach
-                </ul>
-              </div>
-               <div role="tabpanel" class="tab-pane" id="video">
-                <div class="vide_area">
-                  <iframe width="100%" height="250" src="http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="single_sidebar wow fadeInDown">
-            <h2><span>Sponsor</span></h2>
-            <a class="sideAdd" href="#"><img src="{{ asset('frontend') }}/images/add_img.jpg" alt=""></a> </div>
-          <div class="single_sidebar wow fadeInDown">
-            <h2><span>Category Archive</span></h2>
-
-            <select class="catgArchive">
-              <option>Select Category</option>
-             
-              @foreach($categories as $category)
-               <a href="{{ route('category.post',$category->slug) }}">
-              <option value="{{ $category->id }}"> {{$category->name}}</option>
-              </a>
-              @endforeach
-            </select>
-          </div>
-          <div class="single_sidebar wow fadeInDown">
-            <h2><span>Links</span></h2>
-            <ul>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Rss Feed</a></li>
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Life &amp; Style</a></li>
-            </ul>
-          </div>
-        </aside>
-      </div>
+      @include('public.single_page.single_sidebar')
     </div>
   </section>
 
