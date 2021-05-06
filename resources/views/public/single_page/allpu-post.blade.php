@@ -6,11 +6,12 @@
         <div class="left_content">
           <div class="single_page">
             <ol class="breadcrumb" style="height: 50px;background-color: #1A5276;color: #fff">
-               <li style="padding-top:;font-size: 25px"><a href="{{ route('public') }}">ক্যাটেগরি নিউজ </a></li>
+              <li style="padding-top:;font-size: 18px;padding-top: 5px"><a href="{{ route('public') }}">সকল পাবলিক বিশ্ববিদ্যালয়য়ের খবর </a></li>
+              
               
             </ol>
            
-            @if($categoryIdByPosts->isEmpty())
+            @if($allpuposts->isEmpty())
             <div class="error_page">
             <h3>We Are Sorry</h3>
             <h1> Not Found !</h1>
@@ -19,22 +20,43 @@
 
             @else
             <div class="related_post">
-              
-              <ul class="spost_nav wow fadeInDown animated">
-              	@foreach($categoryIdByPosts as $cat_wise)
-                <li>
-                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$cat_wise->slug) }}"> <img src="{{ asset('upload/postimage/'.$cat_wise->image) }}" alt=""> </a>
-                    <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$cat_wise->slug) }}">{{ $cat_wise->title }}</a> </div>
-                  </div>
-                </li>
-                @endforeach
-              </ul>
-               {{ $categoryIdByPosts->links() }}
+              <div class="table-responsive">
+                  <table class="table table-responsive table-hover" style="border:solid 1px">
+                      <thead>
+                          <tr style="color: crimson;font-size: 16px">
+                              <th>#</th>
+                              <th>ছবি</th>
+                              <th>তারিখ</th>
+                              <th>শিরোনাম</th>
+                              <th>বিস্তারিত</th>
+                              <th>ডাউনলোড</th>
+                              
+                          </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($allpuposts as $key => $pu)
+                          <tr>
+                              <td style="text-align: center;">{{ $key+1 }}</td>
+                              <td style="text-align: center;">  <img src="{{ asset('upload/postimage/'.$pu->image) }}" width="50px" height="50px"></td>
+                              <td width="15%" style="text-align: center;">{{ date('d-m-Y',strtotime($pu->created_at)) }}</td>
+                              <td class="media-body"><a class="catg_title" style="color: blue" href="{{ route('singlepost',$pu->slug) }}">{{ $pu->title }}</a> </td>
+                              <td class="media-body"><a style="color: blue" class="catg_title" href="{{ route('singlepost',$pu->slug) }}">বিস্তারিত</a></td>
+                              @if($pu->file ==NULL)
+                              <td></td>
+                              @else
+                              <td style="text-align: center;"> <a  target="_blank" href="{{ asset('upload/postfile/'.$pu->file) }}"><i class="fa fa-download" style="width: 50px;color:blue"></a></td>
+                              @endif
+                          </tr>
+                          @endforeach
+                      </tbody>
+                  </table>
+                  {{ $allpuposts->links() }}
+              </div>
             </div>
             @endif
-
-            <div class="related_post">
-              <h3>সম্পর্কিত </h3>
+            <hr>
+        <div class="related_post">
+              <h3>সম্পর্কিত </i></h3>
               <hr style="border: solid crimson">
               <ul class="spost_nav wow fadeInDown animated">
                 @foreach($relateds as $related)
@@ -44,12 +66,12 @@
                   </div>
                 </li>
                 @endforeach
-                {{ $relateds->links() }}
               </ul>
+               {{ $relateds->links() }}
             </div>
 
              <div class="related_post">
-              <h3>সর্বশেষ </h3>
+              <h3>সর্বশেষ </i></h3>
               <hr style="border: solid crimson">
               <ul class="spost_nav wow fadeInDown animated">
                 @foreach($latests as $latest)
@@ -64,7 +86,7 @@
             </div>
 
              <div class="related_post">
-              <h3>জনপ্রিয় </h3>
+              <h3>জনপ্রিয় </i></h3>
               <hr style="border: solid crimson">
               <ul class="spost_nav wow fadeInDown animated">
                 @foreach($populars as $popular)
@@ -75,9 +97,8 @@
                 </li>
                 @endforeach
               </ul>
-              {{ $populars->links() }}
+               {{ $populars->links() }}
             </div>
-
 
 
           </div>
@@ -92,7 +113,8 @@
           <h3>Street Hills</h3>
           <img src="{{ asset('frontend') }}/images/post_img1.jpg" alt=""/> </div>
         </a> </nav>
-      @include('public.single_page.single_sidebar')
+
+     @include('public.single_page.single_sidebar')
     </div>
   </section>
 

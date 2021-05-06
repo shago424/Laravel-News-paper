@@ -23,9 +23,18 @@ Route::get('/', 'PublicBlogController@index')->name('public');
 Route::get('/singlePost/{slug}', 'PublicBlogController@singlepostById')->name('singlepost');
 Route::get('/category-post/{slug}', 'PublicBlogController@categoryByPost')->name('category.post');
 Route::get('/subcategory-post/{slug}', 'PublicBlogController@subcategoryByPost')->name('subcategory.post');
-Route::get('/allschool-post/{slug}', 'PublicBlogController@allschoolPost')->name('allschool.post');
-
-
+Route::get('/allschool-post', 'PublicBlogController@allschoolPost')->name('allschool.post');
+Route::get('/allnu-post', 'PublicBlogController@allnuPost')->name('allnu.post');
+Route::get('/allpu-post', 'PublicBlogController@allpuPost')->name('allpu.post');
+Route::get('/alladmission-post', 'PublicBlogController@alladmissionPost')->name('alladmission.post');
+Route::get('/allexam-post', 'PublicBlogController@allexamPost')->name('allexam.post');
+Route::get('/allresult-post', 'PublicBlogController@allresultPost')->name('allresult.post');
+Route::get('/allscholar-post', 'PublicBlogController@allscholarPost')->name('allscholar.post');
+Route::get('/allstipend-post', 'PublicBlogController@allstipendPost')->name('allstipend.post');
+Route::get('/allmoney-post', 'PublicBlogController@allmoneyPost')->name('allmoney.post');
+Route::get('/allgj-post/', 'PublicBlogController@allgjPost')->name('allgj.post');
+Route::get('/allpj-post/', 'PublicBlogController@allpjPost')->name('allpj.post');
+Route::get('/allsports-post/', 'PublicBlogController@allsportsPost')->name('allsports.post');
 
 Route::get('/SearchPost/', 'PublicBlogController@SearchPost')->name('SearchPost');
 Route::get('/latestPost', 'PublicBlogController@latestPost')->name('latestpost');

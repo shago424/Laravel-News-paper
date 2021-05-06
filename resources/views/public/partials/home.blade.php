@@ -19,7 +19,7 @@
             @endforeach
             </ul>
             <div class="text-right">
-              <a href="{{ route('allschool.post',$school->slug) }}" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allschool.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
          </div>
@@ -37,7 +37,7 @@
             @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allnu.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
          </div>
@@ -63,7 +63,7 @@
                   @endforeach
                 </ul>
                 <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allgj.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
               </div>
             </div>
@@ -88,7 +88,7 @@
                   @endforeach
                 </ul>
                 <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allpj.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
               </div>
             </div>
@@ -116,7 +116,7 @@
                   @endforeach
               </ul>
               <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allsports.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
             </div>
           </div>
@@ -170,7 +170,7 @@
               </li>
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Photos</a>
+              <a href="" class="btn btn-primary" class="pull-right">আরও ছবি দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
          

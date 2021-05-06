@@ -83,7 +83,7 @@
                 </ul>
               </div>
              
-              <div role="tabpanel" class="tab-pane active" id="comments1">
+              <div role="tabpanel" class="tab-pane" id="comments1">
                 <ul>
                 	@foreach($subcategories as $subcategory)
                   <li class="cat-item"><a href="{{ route('subcategory.post',$subcategory->slug) }}">{{ $subcategory->name }}</a></li>

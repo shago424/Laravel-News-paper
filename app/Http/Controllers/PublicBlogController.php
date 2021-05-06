@@ -43,11 +43,11 @@ class PublicBlogController extends Controller
     {
 
       $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
-      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(5);
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
        $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
        $data['cat_post'] = Post::find($slug);
-      $data['relateds'] = Post::inRandomOrder()->paginate(5);
-      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->limit(12)->get();
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
@@ -97,13 +97,13 @@ class PublicBlogController extends Controller
       return view('public.single_page.allsubcategory-post',$data);
     }
 
-    public function allschoolPost($slug){
+    public function allschoolPost(){
        
       $data['allschoolposts'] = Post::with('user','category','subcategory')->where('category_id','1')->orderBy('id','DESC')->paginate(10);
-      $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
       $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
        $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
-       $data['cat_post'] = Post::find($slug);
+       // $data['cat_post'] = Post::find($slug);
       $data['relateds'] = Post::inRandomOrder()->paginate(9);
       $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
       $data['categories'] = Category::all();
@@ -113,6 +113,204 @@ class PublicBlogController extends Controller
       $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
       $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allschool-post',$data);
+    }
+
+      public function allnuPost(){
+       
+      $data['allnuposts'] = Post::with('user','category','subcategory')->where('category_id','2')->orderBy('id','DESC')->paginate(10);
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.allnu-post',$data);
+    }
+
+      public function allpuPost(){
+       
+      $data['allpuposts'] = Post::with('user','category','subcategory')->where('category_id','3')->orderBy('id','DESC')->paginate(10);
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.allpu-post',$data);
+    }
+
+      public function alladmissionPost(){
+       
+      $data['alladmissionposts'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->paginate(10);
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.alladmission-post',$data);
+    }
+
+      public function allexamPost(){
+       
+      $data['allexamposts'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->paginate(10);
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.allexam-post',$data);
+    }
+
+      public function allresultPost(){
+       
+      $data['allresultposts'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->paginate(10);
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.allresult-post',$data);
+    }
+
+      public function allscholarPost(){
+       
+      $data['allscholarposts'] = Post::with('user','category','subcategory')->where('category_id','42')->orderBy('id','DESC')->paginate(10);
+        // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.allscholar-post',$data);
+    }
+
+      public function allstipendPost(){
+       
+      $data['allstipendposts'] = Post::with('user','category','subcategory')->where('category_id','47')->orderBy('id','DESC')->paginate(10);
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.allstipend-post',$data);
+    }
+
+      public function allmoneyPost(){
+       
+      $data['allmoneyposts'] = Post::with('user','category','subcategory')->where('category_id','49')->orderBy('id','DESC')->paginate(10);
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.allmoney-post',$data);
+    }
+
+        public function allgjPost(){
+       
+      $data['allgjposts'] = Post::with('user','category','subcategory')->where('category_id','49')->orderBy('id','DESC')->paginate(10);
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.allgj-post',$data);
+    }
+
+        public function allpjPost(){
+       
+      $data['allpjposts'] = Post::with('user','category','subcategory')->where('category_id','49')->orderBy('id','DESC')->paginate(10);
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.allpj-post',$data);
+    }
+
+        public function allsportsPost(){
+       
+      $data['allsportsposts'] = Post::with('user','category','subcategory')->where('category_id','49')->orderBy('id','DESC')->paginate(10);
+      // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
+      $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+       $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
+       // $data['cat_post'] = Post::find($slug);
+      $data['relateds'] = Post::inRandomOrder()->paginate(9);
+      $data['populars'] = Post::inRandomOrder()->with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
+      $data['categories'] = Category::all();
+       $data['subcategories'] = SubCategory::all();
+       $data['navcategories'] = Category::limit(10)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      return view('public.single_page.allsports-post',$data);
     }
 
 

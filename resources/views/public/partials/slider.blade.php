@@ -6,7 +6,7 @@
           <div class="single_iteam"> <a href="{{ route('singlepost',$slider->slug) }}"> <img src="{{ asset('upload/postimage') }}/{{ $slider->image }}" alt=""></a>
             <div class="slider_article">
               <h2><a class="slider_tittle" href="{{ route('singlepost',$slider->slug) }}">{{ $slider->title }}</a></h2>
-              <p>{!! $slider->description !!}</p>
+              {{-- <p>{!! $slider->description !!}</p> --}}
             </div>
           </div>
          @endforeach

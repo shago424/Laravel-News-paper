@@ -45,18 +45,52 @@
               </ul>
             </div>
             <div class="related_post">
-              <h3>সম্পর্কিত <i class="fa fa-thumbs-o-up"></i></h3>
+              <h3>সম্পর্কিত</i></h3>
               <hr style="border: solid crimson">
               <ul class="spost_nav wow fadeInDown animated">
               	@foreach($relateds as $related)
                 <li>
                   <div class="media"> <a class="media-left" href="{{ route('singlepost',$related->slug) }}"> <img src="{{ asset('upload/postimage/'.$related->image) }}" alt=""> </a>
-                    <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$related->slug) }}"> Aliquam {{ $related->title }}</a> </div>
+                    <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$related->slug) }}">{{ $related->title }}</a> </div>
                   </div>
                 </li>
                 @endforeach
               </ul>
+              {{ $relateds->links() }}
             </div>
+
+            <div class="related_post">
+              <h3>সর্বশেষ</i></h3>
+              <hr style="border: solid crimson">
+              <ul class="spost_nav wow fadeInDown animated">
+                @foreach($latests as $latest)
+                <li>
+                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$latest->slug) }}"> <img src="{{ asset('upload/postimage/'.$latest->image) }}" alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$latest->slug) }}">{{ $latest->title }}</a> </div>
+                  </div>
+                </li>
+                @endforeach
+              </ul>
+              {{ $latests->links() }}
+            </div>
+
+             <div class="related_post">
+              <h3>জনপ্রিয়</i></h3>
+              <hr style="border: solid crimson">
+              <ul class="spost_nav wow fadeInDown animated">
+                @foreach($populars as $popular)
+                <li>
+                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$popular->slug) }}"> <img src="{{ asset('upload/postimage/'.$popular->image) }}" alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$popular->slug) }}">{{ $popular->title }}</a> </div>
+                  </div>
+                </li>
+                @endforeach
+              </ul>
+               {{ $populars->links() }}
+            </div>
+
+
+
           </div>
         </div>
       </div>

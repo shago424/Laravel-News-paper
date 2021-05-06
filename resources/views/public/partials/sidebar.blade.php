@@ -12,7 +12,7 @@
             @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allpu.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
           <div class="single_sidebar">
@@ -33,7 +33,7 @@
                   @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('alladmission.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="video">
@@ -48,7 +48,7 @@
                   @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allexam.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
                 </div>
               </div>
@@ -63,7 +63,7 @@
                   @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allresult.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
               </div>
             </div>
@@ -86,7 +86,7 @@
                   @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allscholar.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="video1">
@@ -101,7 +101,7 @@
                   @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allstipend.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
                 </div>
               </div>
@@ -115,6 +115,9 @@
                   </li>
                   @endforeach
             </ul>
+            <div class="text-right">
+              <a href="{{ route('allmoney.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+            </div>
               </div>
             </div>
           </div>
@@ -133,7 +136,7 @@
                 </ul>
               </div>
              
-              <div role="tabpanel" class="tab-pane active" id="comments2">
+              <div role="tabpanel" class="tab-pane" id="comments2">
                 <ul>
                   @foreach($subcategories as $subcategory)
                   <li class="cat-item"><a href="{{ route('subcategory.post',$subcategory->slug) }}">{{ $subcategory->name }}</a></li>
