@@ -13,24 +13,24 @@
             <h1>{{ $post->title }}</h1>
             <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i>{{ $post->user->name }}</a> <span><i class="fa fa-calendar"></i>{{ date('d-M-Y:h:i:A',strtotime($post->created_at)) }}</span> <a href="#"><i class="fa fa-tags"></i>{{ $post->tag }}</a> </div>
             <div class="single_page_content"> <img class="img-center"  src="{{ asset('upload/postimage/'.$post->image) }}" alt="">
-              <h5 style="text-align: justify;color: #000">{!! $post->description !!}</h5>
+              <h4 style="text-align: justify;color: #000">{!! $post->description !!}</h4>
               {{-- <blockquote style="text-align: justify;color: blue"> <i> {!! $post->description !!} </i></blockquote> --}}
               
               <div style="padding-top: 50px" >
                 @if($post->file == NULL)
 
                 @else
-                <a target="_blank" href="{{asset('upload/postfile/'.$post->file)}}" class="btn btn-primary">File Download</a>
+                <a target="_blank" href="{{asset('upload/postfile/'.$post->file)}}" class="btn btn-primary">File Download &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
                 @endif
-                 @if($post->video_link == NULL)
+                 @if($post->video_link == 'No')
               
                 @else
-                <a target="_blank" href="{{ $post->video_link }}" class="btn btn-warning"> <i>Go To Video </i></a>
+                <a target="_blank" href="{{ $post->video_link }}" class="btn btn-warning">  Go To Video &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
                 @endif
-                 @if($post->link == NULL)
+                 @if($post->link == 'No')
               
                 @else
-                <a target="_blank" href="{{ $post->link }}" class="btn btn-danger"> <i>Visit Link </i></a>
+                <a target="_blank" href="{{ $post->link }}" class="btn btn-danger"> Visit Link  &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
                 @endif
               </div>
               
@@ -47,10 +47,10 @@
             <div class="related_post">
               <h3>সম্পর্কিত</i></h3>
               <hr style="border: solid crimson">
-              <ul class="spost_nav wow fadeInDown animated">
+              <ul class="photograph_nav  wow fadeInDown">
               	@foreach($relateds as $related)
                 <li>
-                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$related->slug) }}"> <img src="{{ asset('upload/postimage/'.$related->image) }}" alt=""> </a>
+                  <div style="height: 125px" class="media"> <a class="media-left" href="{{ route('singlepost',$related->slug) }}"> <img src="{{ asset('upload/postimage/'.$related->image) }} " alt=""> </a>
                     <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$related->slug) }}">{{ $related->title }}</a> </div>
                   </div>
                 </li>
@@ -62,10 +62,10 @@
             <div class="related_post">
               <h3>সর্বশেষ</i></h3>
               <hr style="border: solid crimson">
-              <ul class="spost_nav wow fadeInDown animated">
+              <ul class="photograph_nav  wow fadeInDown">
                 @foreach($latests as $latest)
                 <li>
-                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$latest->slug) }}"> <img src="{{ asset('upload/postimage/'.$latest->image) }}" alt=""> </a>
+                  <div style="height: 125px" class="media"> <a class="media-left" href="{{ route('singlepost',$latest->slug) }}"> <img src="{{ asset('upload/postimage/'.$latest->image) }}" alt=""> </a>
                     <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$latest->slug) }}">{{ $latest->title }}</a> </div>
                   </div>
                 </li>
@@ -77,10 +77,10 @@
              <div class="related_post">
               <h3>জনপ্রিয়</i></h3>
               <hr style="border: solid crimson">
-              <ul class="spost_nav wow fadeInDown animated">
+              <ul class="photograph_nav  wow fadeInDown">
                 @foreach($populars as $popular)
                 <li>
-                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$popular->slug) }}"> <img src="{{ asset('upload/postimage/'.$popular->image) }}" alt=""> </a>
+                  <div style="height: 125px" class="media"> <a class="media-left" href="{{ route('singlepost',$popular->slug) }}"> <img src="{{ asset('upload/postimage/'.$popular->image) }}" alt=""> </a>
                     <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$popular->slug) }}">{{ $popular->title }}</a> </div>
                   </div>
                 </li>

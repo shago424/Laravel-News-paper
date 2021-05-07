@@ -8,6 +8,7 @@ use App\Post;
 use App\Category;
 use App\SubCateGory;
 use App\Frontend;
+use Carbon\Carbon;
 class PublicBlogController extends Controller
 {
 
@@ -23,19 +24,20 @@ class PublicBlogController extends Controller
         $data['schools'] = Post::with('user','category','subcategory')->where('category_id','1')->orderBy('id','DESC')->limit(4)->get();
       $data['nus'] = Post::with('user','category','subcategory')->where('category_id','2')->orderBy('id','DESC')->limit(4)->get();
       $data['pus'] = Post::with('user','category','subcategory')->where('category_id','3')->orderBy('id','DESC')->limit(4)->get();
-      $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+      $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       $data['gjs'] = Post::with('user','category','subcategory')->where('category_id','39')->orderBy('id','DESC')->limit(4)->get();
       $data['gjsingle'] = Post::with('user','category','subcategory')->where('category_id','39')->orderBy('id','DESC')->first();
        $data['pjs'] = Post::with('user','category','subcategory')->where('category_id','40')->orderBy('id','DESC')->limit(4)->get();
-       $data['sports'] = Post::with('user','category','subcategory')->where('category_id','41')->orderBy('id','DESC')->limit(4)->get();
+       $data['sports'] = Post::with('user','category','subcategory')->where('category_id','47')->orderBy('id','DESC')->limit(4)->get();
        $data['scholars'] = Post::with('user','category','subcategory')->where('category_id','42')->orderBy('id','DESC')->limit(3)->get();
-      $data['stipends'] = Post::with('user','category','subcategory')->where('category_id','47')->orderBy('id','DESC')->limit(3)->get();
-      $data['moneys'] = Post::with('user','category','subcategory')->where('category_id','49')->orderBy('id','DESC')->limit(3)->get();
+      $data['stipends'] = Post::with('user','category','subcategory')->where('category_id','41')->orderBy('id','DESC')->limit(3)->get();
+      $data['moneys'] = Post::with('user','category','subcategory')->where('featured','admins')->orderBy('id','DESC')->limit(3)->get();
        $data['categories'] = Category::all();
-        $data['navcategories'] = Category::limit(10)->get();
+        $data['navcategories'] = Category::limit(11)->get();
        $data['subcategories'] = SubCategory::all();
+       $data['utctime'] = Carbon::now()->toTimeString();
       return view('public.partials.home',$data);
     }
 
@@ -51,9 +53,10 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
+      
       return view('public.single_page.single-post',$data);
     }
 
@@ -72,9 +75,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allcategory-post',$data);
     }
 
@@ -91,9 +94,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allsubcategory-post',$data);
     }
 
@@ -109,9 +112,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allschool-post',$data);
     }
 
@@ -127,9 +130,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allnu-post',$data);
     }
 
@@ -145,15 +148,15 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allpu-post',$data);
     }
 
       public function alladmissionPost(){
        
-      $data['alladmissionposts'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->paginate(10);
+      $data['alladmissionposts'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->paginate(10);
       // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
       $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
        $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
@@ -163,15 +166,15 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.alladmission-post',$data);
     }
 
       public function allexamPost(){
        
-      $data['allexamposts'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->paginate(10);
+      $data['allexamposts'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->paginate(10);
       // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
       $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
        $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
@@ -181,15 +184,15 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allexam-post',$data);
     }
 
       public function allresultPost(){
        
-      $data['allresultposts'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->paginate(10);
+      $data['allresultposts'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->paginate(10);
       // $data['post'] = Post::with('user','category','subcategory')->where('slug',$slug)->first();
       $data['latests'] = Post::with('user','category','subcategory')->orderBy('id','DESC')->paginate(9);
        $data['argents'] = Post::with('user','category','subcategory')->where('featured','argent')->orderBy('id','DESC')->limit(4)->get();
@@ -199,9 +202,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allresult-post',$data);
     }
 
@@ -217,9 +220,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allscholar-post',$data);
     }
 
@@ -235,9 +238,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allstipend-post',$data);
     }
 
@@ -253,9 +256,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allmoney-post',$data);
     }
 
@@ -271,9 +274,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allgj-post',$data);
     }
 
@@ -289,9 +292,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allpj-post',$data);
     }
 
@@ -307,9 +310,9 @@ class PublicBlogController extends Controller
       $data['categories'] = Category::all();
        $data['subcategories'] = SubCategory::all();
        $data['navcategories'] = Category::limit(10)->get();
-       $data['admissions'] = Post::with('user','category','subcategory')->where('category_id','43')->orderBy('id','DESC')->limit(3)->get();
-      $data['exams'] = Post::with('user','category','subcategory')->where('category_id','44')->orderBy('id','DESC')->limit(3)->get();
-      $data['results'] = Post::with('user','category','subcategory')->where('category_id','45')->orderBy('id','DESC')->limit(3)->get();
+       $data['admissions'] = Post::with('user','category','subcategory')->where('featured','admission')->orderBy('id','DESC')->limit(3)->get();
+      $data['exams'] = Post::with('user','category','subcategory')->where('featured','exam')->orderBy('id','DESC')->limit(3)->get();
+      $data['results'] = Post::with('user','category','subcategory')->where('featured','result')->orderBy('id','DESC')->limit(3)->get();
       return view('public.single_page.allsports-post',$data);
     }
 

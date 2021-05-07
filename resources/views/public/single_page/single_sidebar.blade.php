@@ -30,7 +30,7 @@
                   @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('alladmission.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন</a>
             </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="video">
@@ -45,7 +45,7 @@
                   @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allexam.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন</a>
             </div>
                 </div>
               </div>
@@ -60,7 +60,7 @@
                   @endforeach
             </ul>
             <div class="text-right">
-              <a href="" class="btn btn-primary" class="pull-right">More Post</a>
+              <a href="{{ route('allresult.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন</a>
             </div>
               </div>
             </div>

@@ -46,7 +46,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->status = $request->status;
-        $category->slug = $this->slug_generator($request->name);
+        $category->slug = $request->name;;
         $category->created_by = Auth::user()->id;
         $category->save();
         return ['status'=>'success'];
@@ -94,7 +94,7 @@ class CategoryController extends Controller
         $category =  Category::find($id);
         $category->name = $request->name;
         $category->status = $request->status;
-        $category->slug = $this->slug_generator($request->name);
+        $category->slug = $request->name;;
         $category->updated_by = Auth::user()->id;
         $category->save();
         return ['status'=>'success'];

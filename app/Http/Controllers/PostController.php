@@ -60,7 +60,8 @@ class PostController extends Controller
         $post->sub_category_id = $request->sub_category_id;
         $post->category_id = $request->category_id;
         $post->status = $request->status;
-        $post->slug = $this->slug_generator($request->title);
+        // $post->slug = $this->slug_generator($request->title);
+        $post->slug = $request->title;
         $post->created_by = Auth::user()->id;
         if ($request->file('file')){
           $file = $request->file('file');
@@ -116,13 +117,13 @@ class PostController extends Controller
     public function update(Request  $request , $id)
     {
         $this->validate($request, [
-            'video_link' => 'required',
+            
             'category_id' => 'required',
             'sub_category_id' => 'required',
             'title' => 'required',
             'description' => 'required',
             'status'=>'required',
-             'file' => 'max:2048',
+             
         ]);
         $post = post::find($id);
         $post->title = $request->title;
@@ -134,7 +135,7 @@ class PostController extends Controller
         $post->sub_category_id = $request->sub_category_id;
         $post->category_id = $request->category_id;
         $post->status = $request->status;
-        $post->slug = $this->slug_generator($request->title);
+        $post->slug = $request->title;
         $post->updated_by = Auth::user()->id;
 
         if ($request->file('file')){

@@ -41,7 +41,7 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:categories',
+            'name' => 'required',
             'category_id' => 'required',
             'status' => 'required',
         ]);
@@ -50,7 +50,7 @@ class SubCategoryController extends Controller
         $subcategory->name = $request->name;
         $subcategory->category_id = $request->category_id;
         $subcategory->status = $request->status;
-        $subcategory->slug = $this->slug_generator($request->name);
+        $subcategory->slug = $request->name;
         $subcategory->created_by = Auth::user()->id;
         $subcategory->save();
         return ['status'=>'success'];
@@ -100,7 +100,7 @@ class SubCategoryController extends Controller
         $subcategory->name = $request->name;
         $subcategory->category_id = $request->category_id;
         $subcategory->status = $request->status;
-        $subcategory->slug = $this->slug_generator($request->name);
+        $subcategory->slug = $request->name;
         $subcategory->updated_by = Auth::user()->id;
         $subcategory->save();
         return ['status'=>'success'];

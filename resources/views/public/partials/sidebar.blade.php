@@ -72,7 +72,7 @@
             <ul class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active"><a href="#category1" aria-controls="home" role="tab" data-toggle="tab">বৃত্তি</a></li>
               <li role="presentation"><a href="#video1" aria-controls="profile" role="tab" data-toggle="tab">উপবৃত্তি</a></li>
-              <li role="presentation"><a href="#comments1" aria-controls="messages" role="tab" data-toggle="tab">অর্থ ছাড়</a></li>
+              <li role="presentation"><a href="#comments1" aria-controls="messages" role="tab" data-toggle="tab">প্রশাসনিক</a></li>
             </ul>
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="category1">

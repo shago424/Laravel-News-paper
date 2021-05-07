@@ -4066,6 +4066,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     // From Category List
@@ -4179,6 +4182,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73626,6 +73634,28 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("option", { attrs: { value: "slider" } }, [
                                     _vm._v("Slider")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "admission" } },
+                                    [_vm._v("Admission")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "exam" } }, [
+                                    _vm._v("Exam")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "result" } }, [
+                                    _vm._v("Result")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "admins" } }, [
+                                    _vm._v("Admin")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "No" } }, [
+                                    _vm._v("No")
                                   ])
                                 ]
                               ),
@@ -74329,6 +74359,28 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("option", { attrs: { value: "slider" } }, [
                                     _vm._v("Slider")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "admission" } },
+                                    [_vm._v("Admission")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "exam" } }, [
+                                    _vm._v("Exam")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "result" } }, [
+                                    _vm._v("Result")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "admins" } }, [
+                                    _vm._v("Admin")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "No" } }, [
+                                    _vm._v("No")
                                   ])
                                 ]
                               ),
@@ -100567,8 +100619,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Sagor\xampp\htdocs\news_paper\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Sagor\xampp\htdocs\news_paper\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Sagor\xampp\htdocs\laravel_news_paper\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Sagor\xampp\htdocs\laravel_news_paper\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

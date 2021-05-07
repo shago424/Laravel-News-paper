@@ -6,7 +6,7 @@
         <div class="left_content">
           <div class="single_page">
             <ol class="breadcrumb" style="height: 50px;background-color: #1A5276;color: #fff">
-              <li style="padding-top:;font-size: 18px;padding-top: 5px"><a href="{{ route('public') }}">সকল খেলাধুলার নিউজ </a></li>
+              <li style="padding-top:;font-size: 18px;padding-top: 5px"><a href="{{ route('public') }}">সকল খেলাধুলার খবর </a></li>
               
               
             </ol>
@@ -58,10 +58,10 @@
         <div class="related_post">
               <h3>সম্পর্কিত </i></h3>
               <hr style="border: solid crimson">
-              <ul class="spost_nav wow fadeInDown animated">
+              <ul class="photograph_nav  wow fadeInDown">
                 @foreach($relateds as $related)
                 <li>
-                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$related->slug) }}"> <img src="{{ asset('upload/postimage/'.$related->image) }}" alt=""> </a>
+                  <div style="height: 125px" class="media"> <a class="media-left" href="{{ route('singlepost',$related->slug) }}"> <img src="{{ asset('upload/postimage/'.$related->image) }}" alt=""> </a>
                     <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$related->slug) }}">{{ $related->title }}</a> </div>
                   </div>
                 </li>
@@ -73,10 +73,10 @@
              <div class="related_post">
               <h3>সর্বশেষ </i></h3>
               <hr style="border: solid crimson">
-              <ul class="spost_nav wow fadeInDown animated">
+              <ul class="photograph_nav  wow fadeInDown">
                 @foreach($latests as $latest)
                 <li>
-                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$latest->slug) }}"> <img src="{{ asset('upload/postimage/'.$latest->image) }}" alt=""> </a>
+                  <div style="height: 125px" class="media"> <a class="media-left" href="{{ route('singlepost',$latest->slug) }}"> <img src="{{ asset('upload/postimage/'.$latest->image) }}" alt=""> </a>
                     <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$latest->slug) }}">{{ $latest->title }}</a> </div>
                   </div>
                 </li>
@@ -88,10 +88,10 @@
              <div class="related_post">
               <h3>জনপ্রিয় </i></h3>
               <hr style="border: solid crimson">
-              <ul class="spost_nav wow fadeInDown animated">
+              <ul class="photograph_nav  wow fadeInDown">
                 @foreach($populars as $popular)
                 <li>
-                  <div class="media"> <a class="media-left" href="{{ route('singlepost',$popular->slug) }}"> <img src="{{ asset('upload/postimage/'.$popular->image) }}" alt=""> </a>
+                  <div  style="height: 125px" class="media"> <a class="media-left" href="{{ route('singlepost',$popular->slug) }}"> <img src="{{ asset('upload/postimage/'.$popular->image) }}" alt=""> </a>
                     <div class="media-body"> <a class="catg_title" href="{{ route('singlepost',$popular->slug) }}">{{ $popular->title }}</a> </div>
                   </div>
                 </li>
