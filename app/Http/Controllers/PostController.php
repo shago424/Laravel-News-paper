@@ -45,7 +45,7 @@ class PostController extends Controller
             'title' => 'required',
             'description' => 'required',
             'tag' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'required|max:2048',
              // 'image' => 'required|max:2048',
              'status'=>'required',
         ]);
@@ -179,4 +179,16 @@ class PostController extends Controller
             $subCategoryList = SubCategory::where('category_id',$id)->get();
         return response()->json(['subCategoryList'=>$subCategoryList],200);
         }
+
+        public function postSearch()
+    {
+        $search =\Request::get('ps');
+        
+        $postSeacrhs = Post::with('user','category','subcategory')
+      ->where('title','LIKE',"%$search%")
+      ->orwhere('featured','LIKE',"%$search%")
+      ->orderby('id','desc')
+      ->get();
+      return response()->json(['postSeacrhs'=>$postSeacrhs],200);
+    }
 }

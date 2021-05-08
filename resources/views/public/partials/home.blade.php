@@ -7,7 +7,7 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
          <div class="col-md-6">
-            <div class="single_sidebar">
+            <div class="single_sidebar" >
             <h2><span>স্কুল/কলেজ/মাদ্রাসা</span></h2>
             <ul class="spost_nav">
               @foreach($schools as $school)
@@ -96,16 +96,18 @@
            <div class="single_post_content">
             <h2><span>খেলাধুলার সংবাদ</span></h2>
             <div class="single_post_content_left">
-              {{-- <ul class="business_catgnav">
+              <ul class="business_catgnav">
+                 @foreach($sportss as $sport)
                 <li>
-                  <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="pages/single_page.html"> <img src="{{ asset('frontend') }}/images/featured_img1.jpg" alt=""> <span class="overlay"></span> </a>
-                    <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
+                  <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="pages/single_page.html"> <img src="{{ asset('upload/postimage/'.$sport->image) }}" alt=""> <span class="overlay"></span> </a>
+                    <figcaption> <a href="{{ route('singlepost',$sport->slug) }}">{{ $sport->title }}</a> </figcaption>
+                    {{-- <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p> --}}
                   </figure>
                 </li>
+                @endforeach
               </ul>
             </div>
-            <div class="single_post_content_right"> --}}
+            <div class="single_post_content_right">
               <ul class="spost_nav">
                  @foreach($sports as $sport)
                   <li>

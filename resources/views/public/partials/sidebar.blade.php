@@ -70,6 +70,113 @@
           </div>
           <div class="single_sidebar">
             <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#category4" aria-controls="home" role="tab" data-toggle="tab">এমপিওভুক্তি</a></li>
+              <li role="presentation"><a href="#video4" aria-controls="profile" role="tab" data-toggle="tab">এমপিও ছাড়</a></li>
+              <li role="presentation"><a href="#comments4" aria-controls="messages" role="tab" data-toggle="tab">নিবন্ধন</a></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="category4">
+                <ul class="spost_nav">
+               @foreach($newmpos as $newmpo)
+                  <li>
+                    <div class="media wow fadeInDown"> <a href="{{ route('singlepost',$newmpo->slug) }}" class="media-left"> <img alt="" src="{{ asset('upload/postimage/'.$newmpo->image) }}"> </a>
+                      <div class="media-body"> <a href="{{ route('singlepost',$newmpo->slug) }}" class="catg_title"> {{ $newmpo->title }}</a> </div>
+                    </div>
+                  </li>
+                  @endforeach
+            </ul>
+            <div class="text-right">
+              <a href="{{ route('allnewmpo.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+            </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="video4">
+                <div class="vide_area">
+                  <ul class="spost_nav">
+               @foreach($mposars as $mposar)
+                  <li>
+                    <div class="media wow fadeInDown"> <a href="{{ route('singlepost',$mposar->slug) }}" class="media-left"> <img alt="" src="{{ asset('upload/postimage/'.$mposar->image) }}"> </a>
+                      <div class="media-body"> <a href="{{ route('singlepost',$mposar->slug) }}" class="catg_title"> {{ $mposar->title }}</a> </div>
+                    </div>
+                  </li>
+                  @endforeach
+            </ul>
+            <div class="text-right">
+              <a href="{{ route('allmposar.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+            </div>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="comments4">
+                <ul class="spost_nav">
+               @foreach($teacherregis as $teacherregi)
+                  <li>
+                    <div class="media wow fadeInDown"> <a href="{{ route('singlepost',$teacherregi->slug) }}" class="media-left"> <img alt="" src="{{ asset('upload/postimage/'.$teacherregi->image) }}"> </a>
+                      <div class="media-body"> <a href="{{ route('singlepost',$teacherregi->slug) }}" class="catg_title"> {{ $teacherregi->title }}</a> </div>
+                    </div>
+                  </li>
+                  @endforeach
+            </ul>
+            <div class="text-right">
+              <a href="{{ route('allteacherregi.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+            </div>
+              </div>
+            </div>
+          </div>
+           <div class="single_sidebar">
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#category3" aria-controls="home" role="tab" data-toggle="tab">শিক্ষক</a></li>
+              <li role="presentation"><a href="#video3" aria-controls="profile" role="tab" data-toggle="tab">শিক্ষার্থী</a></li>
+              <li role="presentation"><a href="#comments3" aria-controls="messages" role="tab" data-toggle="tab">কর্মচারী</a></li>
+            </ul>
+             <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="category4">
+                <ul class="spost_nav">
+               @foreach($teachers as $teacher)
+                  <li>
+                    <div class="media wow fadeInDown"> <a href="{{ route('singlepost',$teacher->slug) }}" class="media-left"> <img alt="" src="{{ asset('upload/postimage/'.$teacher->image) }}"> </a>
+                      <div class="media-body"> <a href="{{ route('singlepost',$teacher->slug) }}" class="catg_title"> {{ $teacher->title }}</a> </div>
+                    </div>
+                  </li>
+                  @endforeach
+            </ul>
+            <div class="text-right">
+              <a href="{{ route('allteacher.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+            </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="video4">
+                <div class="vide_area">
+                  <ul class="spost_nav">
+               @foreach($students as $student)
+                  <li>
+                    <div class="media wow fadeInDown"> <a href="{{ route('singlepost',$student->slug) }}" class="media-left"> <img alt="" src="{{ asset('upload/postimage/'.$student->image) }}"> </a>
+                      <div class="media-body"> <a href="{{ route('singlepost',$student->slug) }}" class="catg_title"> {{ $student->title }}</a> </div>
+                    </div>
+                  </li>
+                  @endforeach
+            </ul>
+            <div class="text-right">
+              <a href="{{ route('allstudent.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+            </div>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="comments4">
+                <ul class="spost_nav">
+               @foreach($stuffs as $stuff)
+                  <li>
+                    <div class="media wow fadeInDown"> <a href="{{ route('singlepost',$stuff->slug) }}" class="media-left"> <img alt="" src="{{ asset('upload/postimage/'.$stuff->image) }}"> </a>
+                      <div class="media-body"> <a href="{{ route('singlepost',$stuff->slug) }}" class="catg_title"> {{ $stuff->title }}</a> </div>
+                    </div>
+                  </li>
+                  @endforeach
+            </ul>
+            <div class="text-right">
+              <a href="{{ route('allstuff.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+            </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="single_sidebar">
+            <ul class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active"><a href="#category1" aria-controls="home" role="tab" data-toggle="tab">বৃত্তি</a></li>
               <li role="presentation"><a href="#video1" aria-controls="profile" role="tab" data-toggle="tab">উপবৃত্তি</a></li>
               <li role="presentation"><a href="#comments1" aria-controls="messages" role="tab" data-toggle="tab">প্রশাসনিক</a></li>

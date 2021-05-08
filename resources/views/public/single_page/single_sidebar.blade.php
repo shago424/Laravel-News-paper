@@ -1,17 +1,21 @@
  <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
-          <div class="single_sidebar">
-            <h2><span>জনপ্রিয়</span></h2>
-            <ul class="spost_nav">
-            	@foreach($populars as $popular)
+           <div class="latest_post">
+          <h2><span>জনপ্রিয় সংবাদ</span></h2>
+          <div class="latest_post_container">
+            <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
+            <ul class="latest_postnav">
+              @foreach($populars as $popular)
               <li>
-                <div class="media wow fadeInDown"> <a href="{{ route('singlepost',$popular->slug) }}" class="media-left"> <img alt="" src="{{ asset('upload/postimage/'.$popular->image) }}"> </a>
+                <div class="media"> <a href="{{ route('singlepost',$popular->slug) }}" class="media-left"> <img alt="" src="{{ asset('upload/postimage') }}/{{ $popular->image }}"> </a>
                   <div class="media-body"> <a href="{{ route('singlepost',$popular->slug) }}" class="catg_title"> {{ $popular->title }}</a> </div>
                 </div>
               </li>
-            @endforeach
+             @endforeach
             </ul>
+            <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
           </div>
+        </div>
           <div class="single_sidebar">
             <ul class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">ভর্তি</a></li>

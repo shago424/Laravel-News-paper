@@ -36,6 +36,15 @@ Route::get('/allgj-post/', 'PublicBlogController@allgjPost')->name('allgj.post')
 Route::get('/allpj-post/', 'PublicBlogController@allpjPost')->name('allpj.post');
 Route::get('/allsports-post/', 'PublicBlogController@allsportsPost')->name('allsports.post');
 
+Route::get('/allnewmpo-post', 'PublicBlogController@allnewmpoPost')->name('allnewmpo.post');
+Route::get('/allmposar-post', 'PublicBlogController@allmposarPost')->name('allmposar.post');
+Route::get('/allteacherregi-post', 'PublicBlogController@allteacherregiPost')->name('allteacherregi.post');
+Route::get('/allteacher-post/', 'PublicBlogController@allteacherPost')->name('allteacher.post');
+Route::get('/allstudent-post/', 'PublicBlogController@allstudentPost')->name('allstudent.post');
+Route::get('/allstuff-post/', 'PublicBlogController@allstuffPost')->name('allstuff.post');
+
+
+
 Route::get('/SearchPost/', 'PublicBlogController@SearchPost')->name('SearchPost');
 Route::get('/latestPost', 'PublicBlogController@latestPost')->name('latestpost');
 
@@ -84,6 +93,7 @@ Route::post('/post-add', 'PostController@store')->name('post.store');
 Route::get('/editpost/{id}', 'PostController@edit')->name('post.edit');
 Route::post('/postUpdate/{id}', 'PostController@update')->name('post.update');
 Route::get('/postDelete/{id}', 'PostController@destroy')->name('post.delete');
+Route::get('/postSearch/', 'PostController@postSearch')->name('postSearch');
 
 // get subCategoy From Category
 Route::get('/getSubcategoryByCategoryId/{id}', 'ContentController@getSubcategoryByCategoryId')->name('content.getSubcategoryByCategoryId');

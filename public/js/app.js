@@ -4496,6 +4496,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -4590,6 +4592,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'postlist',
   mounted: function mounted() {
@@ -4626,7 +4645,10 @@ __webpack_require__.r(__webpack_exports__);
         //   })
 
       });
-    }
+    },
+    RealSearch: lodash__WEBPACK_IMPORTED_MODULE_0___default.a.debounce(function () {
+      this.$store.dispatch('postSearch', this.keyword);
+    }, 1000)
   }
 });
 
@@ -74849,27 +74871,58 @@ var render = function() {
                       staticStyle: { background: "#34495E", color: "#fff" }
                     },
                     [
-                      _c(
-                        "h5",
-                        { staticClass: "card-title p-2 font-weight-bold" },
-                        [_vm._v("Post List")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "text-right p-2" },
-                        [
+                      _c("div", { staticClass: "row" }, [
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-3" }, [
+                          _c("form", { staticClass: "form-search pt-2" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.keyword,
+                                  expression: "keyword"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                placeholder: "Type something",
+                                type: "text"
+                              },
+                              domProps: { value: _vm.keyword },
+                              on: {
+                                keyup: _vm.RealSearch,
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.keyword = $event.target.value
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-2" }, [
                           _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-warning font-weight-bold",
-                              attrs: { to: "/add-post" }
-                            },
-                            [_vm._v("Add Post")]
+                            "div",
+                            { staticClass: "text-right p-2" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass:
+                                    "btn btn-warning font-weight-bold",
+                                  attrs: { to: "/add-post" }
+                                },
+                                [_vm._v("Add Post")]
+                              )
+                            ],
+                            1
                           )
-                        ],
-                        1
-                      )
+                        ])
+                      ])
                     ]
                   ),
                   _vm._v(" "),
@@ -74887,7 +74940,7 @@ var render = function() {
                             "table table-bordered table-sm table-hover"
                         },
                         [
-                          _vm._m(0),
+                          _vm._m(1),
                           _vm._v(" "),
                           _c(
                             "tbody",
@@ -74917,17 +74970,7 @@ var render = function() {
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm._f("shortlength")(
-                                        postlist.description,
-                                        50,
-                                        "......."
-                                      )
-                                    )
-                                  )
-                                ]),
+                                _c("td", [_vm._v(_vm._s(postlist.featured))]),
                                 _vm._v(" "),
                                 _c("td", { attrs: { width: "10%" } }, [
                                   _vm._v(
@@ -75006,6 +75049,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-7" }, [
+      _c("h5", { staticClass: "card-title p-2 font-weight-bold" }, [
+        _vm._v("Post List")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", { staticStyle: { background: "#138D75", color: "#fff" } }, [
         _c("th", [_vm._v("#")]),
@@ -75018,7 +75071,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Title")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Description")]),
+        _c("th", [_vm._v("Featured")]),
         _vm._v(" "),
         _c("th", [_vm._v("Created At")]),
         _vm._v(" "),

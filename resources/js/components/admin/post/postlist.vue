@@ -29,10 +29,26 @@
           <div class="col-lg-12">
             <div class="panel panel-primary panel-outline" style="border:solid 3px #34495E;">
               <div class="panel-header" style="background:#34495E;color:#fff">
-              <h5 class="card-title p-2 font-weight-bold">Post List</h5>
-               <div class="text-right p-2">
+                <div class="row">
+                  <div class="col-md-7">
+                     <h5 class="card-title p-2 font-weight-bold">Post List</h5>
+                  </div>
+                  <div class="col-md-3">
+                    <form class="form-search pt-2" >
+                  <input @keyup="RealSearch"  placeholder="Type something" v-model="keyword" type="text" class="form-control">
+                 <!--  <button type="submit" @click.prevent="RealSearch" class="btn btn-square btn-theme">Search</button> -->
+                </form>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="text-right p-2">
                <router-link to="/add-post" class="btn btn-warning font-weight-bold">Add Post</router-link>
               </div>
+                  </div>
+                </div>
+             
+              
+               
+              
               </div>
               <div class="panel-body p-3" style="background:#FAFAF9">
                 <table class="table table-bordered table-sm table-hover">
@@ -44,7 +60,7 @@
                       <th>CatName</th>
                       <th>Sub Name</th>
                       <th>Title</th>
-                      <th>Description</th>
+                      <th>Featured</th>
                       <th>Created At</th>        
                       <th>Status</th>
                       <th>Image</th>
@@ -58,7 +74,7 @@
                       <td>{{ postlist.category.name }}</td>
                        <td>{{ postlist.subcategory.name }}</td>
                       <td>{{ postlist.title | shortlength(50,".......")}}</td>
-                      <td>{{ postlist.description | shortlength(50,".......") }}</td>
+                      <td>{{ postlist.featured }}</td>
                       
                       <td width="10%">{{ postlist.created_at | timeformat}}</td>
                       <td>{{ postlist.status }}</td>
@@ -93,13 +109,18 @@
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
   name:'postlist',
 
     mounted(){
       // From Category List
       this.$store.dispatch('getpostList')
+
+
     },
+
+
 
     computed:{
       getpostList(){
@@ -109,6 +130,7 @@ export default {
  
 
   methods: {
+
    postDelete(id){
     axios.get('/postDelete/'+id).then((response)=>{
        Swal.fire({
@@ -135,7 +157,11 @@ export default {
         //       title: 'Post Deleted Successfully'
         //   })
     })
-   }
+   },
+   RealSearch:_.debounce(function () {
+        this.$store.dispatch('postSearch',this.keyword);
+      },1000 )
+  
   }
 };
 </script>
