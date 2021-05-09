@@ -6,12 +6,12 @@
         <div class="left_content">
           <div class="single_page">
             <ol class="breadcrumb" style="height: 50px;background-color: #1A5276;color: #fff">
-              <li style="padding-top:;font-size: 18px;padding-top: 5px"><a href="{{ route('public') }}">ক্যাটেগরি : ফলাফল সংক্রান্ত </a></li>
+              <li style="padding-top:;font-size: 18px;padding-top: 5px"><a href="{{ route('public') }}">ক্যাটেগরি : এমপিও </a></li>
               
               
             </ol>
            
-            @if($allresultposts->isEmpty())
+            @if($allnewmpoposts->isEmpty())
             <div class="error_page">
             <h3>We Are Sorry</h3>
             <h1> Not Found !</h1>
@@ -34,23 +34,23 @@
                           </tr>
                       </thead>
                       <tbody>
-                        @foreach($allresultposts as $key => $result)
+                        @foreach($allnewmpoposts as $key => $newmpo)
                           <tr>
                               <td style="text-align: center;">{{ $key+1 }}</td>
-                              <td style="text-align: center;">  <img src="{{ asset('upload/postimage/'.$result->image) }}" width="50px" height="50px"></td>
-                              <td width="15%" style="text-align: center;">{{ date('d-m-Y',strtotime($result->created_at)) }}</td>
-                              <td class="media-body"><a class="catg_title" style="color: blue" href="{{ route('singlepost',$result->slug) }}">{{ $result->title }}</a> </td>
-                              <td class="media-body"><a style="color: blue" class="catg_title" href="{{ route('singlepost',$result->slug) }}">বিস্তারিত</a></td>
-                              @if($result->file ==NULL)
+                              <td style="text-align: center;">  <img src="{{ asset('upload/postimage/'.$newmpo->image) }}" width="50px" height="50px"></td>
+                              <td width="15%" style="text-align: center;">{{ date('d-m-Y',strtotime($newmpo->created_at)) }}</td>
+                              <td class="media-body"><a class="catg_title" style="color: blue" href="{{ route('singlepost',$newmpo->slug) }}">{{ $newmpo->title }}</a> </td>
+                              <td class="media-body"><a style="color: blue" class="catg_title" href="{{ route('singlepost',$newmpo->slug) }}">বিস্তারিত</a></td>
+                              @if($newmpo->file ==NULL)
                               <td></td>
                               @else
-                              <td style="text-align: center;"> <a  target="_blank" href="{{ asset('upload/postfile/'.$result->file) }}"><i class="fa fa-download" style="width: 50px;color:blue"></a></td>
+                              <td style="text-align: center;"> <a  target="_blank" href="{{ asset('upload/postfile/'.$newmpo->file) }}"><i class="fa fa-download" style="width: 50px;color:blue"></a></td>
                               @endif
                           </tr>
                           @endforeach
                       </tbody>
                   </table>
-                  {{ $allresultposts->links() }}
+                  {{ $allnewmpoposts->links() }}
               </div>
             </div>
             @endif

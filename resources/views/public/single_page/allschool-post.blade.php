@@ -6,7 +6,7 @@
         <div class="left_content">
           <div class="single_page">
             <ol class="breadcrumb" style="height: 50px;background-color: #1A5276;color: #fff">
-              <li style="padding-top:;font-size: 25px"><a href="{{ route('public') }}">স্কুল/কলেজ/মাদ্রাসার খবর </a></li>
+              <li style="padding-top:;font-size: 25px"><a href="{{ route('public') }}">ক্যাটেগরি : স্কুল/কলেজ/মাদ্রাসা </a></li>
               
               
             </ol>

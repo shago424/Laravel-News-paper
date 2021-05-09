@@ -67,13 +67,19 @@
                         <label for="name">Featured</label>
                         <select type="text" v-model="featured"  name="featured"  class="form-control" id="featured" >
                           <option value="">Select Featured</option>
+                          <option value="No">No</option>
                            <option value="argent">Argent</option>
                             <option value="slider">Slider</option>
                             <option value="admission">Admission</option>
                             <option value="exam">Exam</option>
                             <option value="result">Result</option>
                             <option value="admins">Admin</option>
-                            <option value="No">No</option>
+                            <option value="newmpo">New Mpo</option>
+                            <option value="mposar">Mpo Check</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                            <option value="stuff">Stuff</option>
+                            
                     </select>
                          <div class="text-danger" v-if = "errors && errors.featured">{{errors.featured[0] }}</div>
                           </div>

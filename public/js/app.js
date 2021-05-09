@@ -4069,6 +4069,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     // From Category List
@@ -4182,6 +4188,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73650,6 +73662,10 @@ var render = function() {
                                     _vm._v("Select Featured")
                                   ]),
                                   _vm._v(" "),
+                                  _c("option", { attrs: { value: "No" } }, [
+                                    _vm._v("No")
+                                  ]),
+                                  _vm._v(" "),
                                   _c("option", { attrs: { value: "argent" } }, [
                                     _vm._v("Argent")
                                   ]),
@@ -73676,8 +73692,28 @@ var render = function() {
                                     _vm._v("Admin")
                                   ]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "No" } }, [
-                                    _vm._v("No")
+                                  _c("option", { attrs: { value: "newmpo" } }, [
+                                    _vm._v("New Mpo")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "mposar" } }, [
+                                    _vm._v("Mpo Check")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "teacher" } },
+                                    [_vm._v("Teacher")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "student" } },
+                                    [_vm._v("Student")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "stuff" } }, [
+                                    _vm._v("Stuff")
                                   ])
                                 ]
                               ),
@@ -74375,6 +74411,10 @@ var render = function() {
                                     _vm._v("Select Featured")
                                   ]),
                                   _vm._v(" "),
+                                  _c("option", { attrs: { value: "No" } }, [
+                                    _vm._v("No")
+                                  ]),
+                                  _vm._v(" "),
                                   _c("option", { attrs: { value: "argent" } }, [
                                     _vm._v("Argent")
                                   ]),
@@ -74401,8 +74441,28 @@ var render = function() {
                                     _vm._v("Admin")
                                   ]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "No" } }, [
-                                    _vm._v("No")
+                                  _c("option", { attrs: { value: "newmpo" } }, [
+                                    _vm._v("New Mpo")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "mposar" } }, [
+                                    _vm._v("Mpo Check")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "teacher" } },
+                                    [_vm._v("Teacher")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "student" } },
+                                    [_vm._v("Student")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "stuff" } }, [
+                                    _vm._v("Stuff")
                                   ])
                                 ]
                               ),

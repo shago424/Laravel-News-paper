@@ -123,12 +123,12 @@
           </div>
            <div class="single_sidebar">
             <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#category3" aria-controls="home" role="tab" data-toggle="tab">শিক্ষক</a></li>
-              <li role="presentation"><a href="#video3" aria-controls="profile" role="tab" data-toggle="tab">শিক্ষার্থী</a></li>
-              <li role="presentation"><a href="#comments3" aria-controls="messages" role="tab" data-toggle="tab">কর্মচারী</a></li>
+              <li role="presentation" class="active"><a href="#category5" aria-controls="home" role="tab" data-toggle="tab">শিক্ষক</a></li>
+              <li role="presentation"><a href="#video5" aria-controls="profile" role="tab" data-toggle="tab">শিক্ষার্থী</a></li>
+              <li role="presentation"><a href="#comments5" aria-controls="messages" role="tab" data-toggle="tab">কর্মচারী</a></li>
             </ul>
              <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="category4">
+              <div role="tabpanel" class="tab-pane active" id="category5">
                 <ul class="spost_nav">
                @foreach($teachers as $teacher)
                   <li>
@@ -142,7 +142,7 @@
               <a href="{{ route('allteacher.post') }}" class="btn btn-primary" class="pull-right">আরও দেখুন &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
             </div>
               </div>
-              <div role="tabpanel" class="tab-pane" id="video4">
+              <div role="tabpanel" class="tab-pane" id="video5">
                 <div class="vide_area">
                   <ul class="spost_nav">
                @foreach($students as $student)
@@ -158,7 +158,7 @@
             </div>
                 </div>
               </div>
-              <div role="tabpanel" class="tab-pane" id="comments4">
+              <div role="tabpanel" class="tab-pane" id="comments5">
                 <ul class="spost_nav">
                @foreach($stuffs as $stuff)
                   <li>

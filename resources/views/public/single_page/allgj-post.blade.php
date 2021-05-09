@@ -6,7 +6,7 @@
         <div class="left_content">
           <div class="single_page">
             <ol class="breadcrumb" style="height: 50px;background-color: #1A5276;color: #fff">
-             <li style="padding-top:;font-size: 18px;padding-top: 5px"><a href="{{ route('public') }}">সকল সরকারী চাকুরীর খবর </a></li>
+             <li style="padding-top:;font-size: 18px;padding-top: 5px"><a href="{{ route('public') }}">ক্যাটেগরি : সরকারী চাকুরী  </a></li>
               
               
             </ol>
